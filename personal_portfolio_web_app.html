@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henry Jr T. Lompot | Cybersecurity & AI/IoT Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#0a0f1d',
+                            800: '#111827',
+                            700: '#1f2937',
+                            600: '#374151'
+                        },
+                        cyber: {
+                            cyan: '#06b6d4',
+                            emerald: '#10b981',
+                            blue: '#3b82f6',
+                            purple: '#8b5cf6'
+                        }
+                    },
+                    fontFamily: {
+                        mono: ['Fira Code', 'Courier New', 'monospace'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #080c16;
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(6, 182, 212, 0.12) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .glow-cyan {
+            box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.35);
+        }
+        .glow-emerald {
+            box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.35);
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080c16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+    </style>
+</head>
+<body class="bg-grid-pattern relative">
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky top-0 z-50 bg-dark-900/80 backdrop-blur-md border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-cyber-cyan to-cyber-emerald flex items-center justify-center font-mono font-bold text-dark-900 text-lg shadow-lg">
+                        HL
+                    </div>
+                    <span class="font-mono text-sm tracking-wider font-semibold text-gray-200">
+                        <span class="text-cyber-cyan">&gt;</span> henry_lompot<span class="animate-pulse text-cyber-emerald">_</span>
+                    </span>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#about" class="text-gray-300 hover:text-cyber-cyan transition-colors">About</a>
+                    <a href="#certifications" class="text-gray-300 hover:text-cyber-cyan transition-colors">Certifications</a>
+                    <a href="#projects" class="text-gray-300 hover:text-cyber-cyan transition-colors">Projects</a>
+                    <a href="#skills" class="text-gray-300 hover:text-cyber-cyan transition-colors">Skills</a>
+                    <a href="#experience" class="text-gray-300 hover:text-cyber-cyan transition-colors">Experience</a>
+                    <a href="#contact" class="px-4 py-2 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/40 text-cyber-cyan hover:bg-cyber-cyan/20 transition-all font-mono text-xs">
+                        Contact.init()
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-400 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-800/95 border-b border-gray-800 px-4 pt-2 pb-4 space-y-2 text-sm">
+            <a href="#about" class="mobile-nav-link block py-2 text-gray-300 hover:text-cyber-cyan">About</a>
+            <a href="#certifications" class="mobile-nav-link block py-2 text-gray-300 hover:text-cyber-cyan">Certifications</a>
+            <a href="#projects" class="mobile-nav-link block py-2 text-gray-300 hover:text-cyber-cyan">Projects</a>
+            <a href="#skills" class="mobile-nav-link block py-2 text-gray-300 hover:text-cyber-cyan">Skills</a>
+            <a href="#experience" class="mobile-nav-link block py-2 text-gray-300 hover:text-cyber-cyan">Experience</a>
+            <a href="#contact" class="mobile-nav-link block py-2 text-cyber-cyan">Contact Me</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-[88vh] flex items-center justify-center relative px-4 sm:px-6 lg:px-8 py-12">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Info Column -->
+            <div class="lg:col-span-7 space-y-6">
+                <!-- Badge -->
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-cyber-emerald animate-ping"></span>
+                    <span>Ready for Entry-Level Cybersecurity & System Roles</span>
+                </div>
+
+                <div class="space-y-2">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Henry Jr T. <span class="bg-gradient-to-r from-cyber-cyan via-blue-400 to-cyber-emerald bg-clip-text text-transparent">Lompot</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-gray-300 font-medium">
+                        Computer Engineering Student | Cybersecurity Analyst | AI & IoT Systems Integrator
+                    </p>
+                </div>
+
+                <p class="text-gray-400 text-sm leading-relaxed max-w-2xl">
+                    Bridging embedded hardware engineering with enterprise defensive security, machine learning models, and real-time cloud telemetry.
+                </p>
+
+                <!-- Key Credentials Pill Group -->
+                <div class="flex flex-wrap gap-2 text-xs font-mono pt-1">
+                    <span class="px-3 py-1 rounded-md bg-dark-700/80 text-blue-400 border border-blue-500/20">
+                        <i class="fa-solid fa-shield-halved mr-1"></i> IBM Cybersecurity Analyst
+                    </span>
+                    <span class="px-3 py-1 rounded-md bg-dark-700/80 text-teal-400 border border-teal-500/20">
+                        <i class="fa-solid fa-brain mr-1"></i> Microsoft AI Product Manager
+                    </span>
+                    <span class="px-3 py-1 rounded-md bg-dark-700/80 text-amber-400 border border-amber-500/20">
+                        <i class="fa-solid fa-award mr-1"></i> Master Electronics Technician
+                    </span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap items-center gap-4 pt-4">
+                    <a href="#projects" class="px-6 py-3 rounded-lg bg-gradient-to-r from-cyber-cyan to-blue-600 text-dark-900 font-semibold text-sm hover:brightness-110 transition shadow-lg glow-cyan flex items-center space-x-2">
+                        <span>Explore Projects</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="px-6 py-3 rounded-lg bg-dark-700 hover:bg-dark-600 text-gray-200 border border-gray-700 text-sm font-medium transition flex items-center space-x-2">
+                        <i class="fa-regular fa-envelope"></i>
+                        <span>Contact Me</span>
+                    </a>
+                    <button onclick="openResumeModal()" class="px-4 py-3 rounded-lg text-gray-400 hover:text-cyber-cyan text-sm font-mono flex items-center space-x-2 transition border border-transparent hover:border-gray-800">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <span>Resume.pdf</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Interactive Terminal Mockup -->
+            <div class="lg:col-span-5">
+                <div class="rounded-xl bg-dark-900 border border-gray-800 shadow-2xl overflow-hidden font-mono text-xs text-gray-300">
+                    <!-- Terminal Top Bar -->
+                    <div class="bg-dark-800 px-4 py-2.5 flex items-center justify-between border-b border-gray-800">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                        </div>
+                        <span class="text-gray-500 text-[11px]">henry@soc-workstation:~</span>
+                        <i class="fa-solid fa-terminal text-gray-600"></i>
+                    </div>
+                    <!-- Terminal Body -->
+                    <div class="p-4 space-y-3 font-mono leading-relaxed bg-dark-900/90 min-h-[320px]">
+                        <div>
+                            <span class="text-cyber-emerald">user@dict-cyberpro</span>:<span class="text-cyber-cyan">~</span>$ whoami
+                            <div class="text-gray-300 mt-1 pl-2 border-l-2 border-cyber-cyan/40">
+                                Henry Jr T. Lompot (BSCpE, 4th Year)
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-cyber-emerald">user@dict-cyberpro</span>:<span class="text-cyber-cyan">~</span>$ cat specs.json
+                            <div class="text-gray-400 mt-1 pl-2 text-[11px] space-y-0.5">
+                                <p>{ "location": "Las Piñas City, Metro Manila",</p>
+                                <p>&nbsp;&nbsp;"institution": "STI College Las Piñas",</p>
+                                <p>&nbsp;&nbsp;"expected_grad": "2027",</p>
+                                <p>&nbsp;&nbsp;"focus": ["Embedded IoT", "Defensive Cybersecurity", "ML"] }</p>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-cyber-emerald">user@dict-cyberpro</span>:<span class="text-cyber-cyan">~</span>$ check-status
+                            <div class="text-emerald-400 mt-1 pl-2 flex items-center space-x-2">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>DICT CyberPro Verified Profile Active</span>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <span class="text-cyber-emerald">user@dict-cyberpro</span>:<span class="text-cyber-cyan">~</span>$ <span class="animate-pulse">|</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 bg-dark-800/40 border-y border-gray-800/60 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-mono text-cyber-cyan uppercase tracking-widest mb-2">// 01. Background & Bio</h2>
+                <h3 class="text-3xl font-bold text-white">Bridging Embedded Systems with Cyber Security</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-6 rounded-xl space-y-3 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white">Hardware & Embedded Engineering</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Strong foundation in Computer Engineering principles, circuit design (KiCad, LTspice), microcontroller programming (ESP32-C3, Arduino), and sensor telemetry interfaces.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-6 rounded-xl space-y-3 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyber-emerald/10 border border-cyber-emerald/30 text-cyber-emerald flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-shield-cat"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white">Defensive Cybersecurity & SOC</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Trained across threat intelligence, SIEM logging (Google Chronicle, Splunk), YARA-L rule drafting, incident response frameworks, and Linux system hardening.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-6 rounded-xl space-y-3 transition">
+                    <div class="w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white">AI & Cloud System Integration</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Experience training Scikit-learn machine learning classifiers, connecting cloud backends (Google Firebase, Arduino IoT Cloud), and utilizing Azure/Power BI for product analytics.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Accolades Highlight Strip -->
+            <div class="mt-12 p-6 rounded-xl bg-gradient-to-r from-dark-900 via-dark-800 to-dark-900 border border-gray-800 flex flex-wrap items-center justify-between gap-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-white">Best Presenter Award</h4>
+                        <p class="text-xs text-gray-400">ICT Research Symposium S.Y. 2025–2026 | STI College Las Piñas</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-white">Master Electronics Technician</h4>
+                        <p class="text-xs text-gray-400">Commendation for Technical Expertise on Electronic Systems (AY 2024–2025)</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-xs font-mono text-cyber-cyan uppercase tracking-widest mb-2">// 02. Verified Qualifications</h2>
+                <h3 class="text-3xl font-bold text-white">Industry Certifications & Badges</h3>
+                <p class="text-gray-400 text-sm mt-2">Recognized credentials validating expertise in cybersecurity analysis, AI strategy, and compliance.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- IBM Cybersecurity Analyst -->
+                <div class="glass-card p-6 rounded-xl flex items-start space-x-4 hover:border-blue-500/50 transition">
+                    <div class="w-14 h-14 rounded-lg bg-blue-900/40 border border-blue-500/40 flex-shrink-0 flex items-center justify-center text-blue-400 text-2xl font-bold">
+                        IBM
+                    </div>
+                    <div class="space-y-1">
+                        <span class="text-[11px] font-mono text-blue-400 uppercase">8-Course Specialization</span>
+                        <h4 class="text-base font-bold text-white">IBM Cybersecurity Analyst Professional Certificate</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Includes SOC workflows, threat hunting, SIEM tools, network security, incident response, digital forensics, and real-world breach case studies.
+                        </p>
+                        <div class="text-[11px] font-mono text-gray-500 pt-1">Issued: Feb 06, 2024 • Coursera</div>
+                    </div>
+                </div>
+
+                <!-- Microsoft AI Product Manager -->
+                <div class="glass-card p-6 rounded-xl flex items-start space-x-4 hover:border-teal-500/50 transition">
+                    <div class="w-14 h-14 rounded-lg bg-teal-900/40 border border-teal-500/40 flex-shrink-0 flex items-center justify-center text-teal-400 text-2xl font-bold">
+                        MSFT
+                    </div>
+                    <div class="space-y-1">
+                        <span class="text-[11px] font-mono text-teal-400 uppercase">Professional Certificate</span>
+                        <h4 class="text-base font-bold text-white">Microsoft AI Product Manager Professional Certificate</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Mastered enterprise product management, cloud strategy (Azure), data analytics (Power BI), and AI integration using Copilot.
+                        </p>
+                        <div class="text-[11px] font-mono text-gray-500 pt-1">Issued: Sep 18, 2025 • Coursera</div>
+                    </div>
+                </div>
+
+                <!-- IBM Compliance & System Admin -->
+                <div class="glass-card p-6 rounded-xl flex items-start space-x-4 hover:border-purple-500/50 transition">
+                    <div class="w-14 h-14 rounded-lg bg-purple-900/40 border border-purple-500/40 flex-shrink-0 flex items-center justify-center text-purple-400 text-2xl font-bold">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="text-[11px] font-mono text-purple-400 uppercase">Credly Digital Badge</span>
+                        <h4 class="text-base font-bold text-white">Cybersecurity Compliance Framework & System Administration</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Validated competence in regulatory frameworks (NIST, ISO), OS hardening, access controls, and administrative compliance protocols.
+                        </p>
+                        <div class="text-[11px] font-mono text-gray-500 pt-1">Issued: Feb 05, 2024 • Credly</div>
+                    </div>
+                </div>
+
+                <!-- IBM Security+ Prep -->
+                <div class="glass-card p-6 rounded-xl flex items-start space-x-4 hover:border-emerald-500/50 transition">
+                    <div class="w-14 h-14 rounded-lg bg-emerald-900/40 border border-emerald-500/40 flex-shrink-0 flex items-center justify-center text-emerald-400 text-2xl font-bold">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="text-[11px] font-mono text-emerald-400 uppercase">Assessment Certificate</span>
+                        <h4 class="text-base font-bold text-white">Cybersecurity Assessment: CompTIA Security+ & CySA+</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Comprehensive assessment covering baseline exam domains for CompTIA Security+ and Cyber Threat Analyst competency.
+                        </p>
+                        <div class="text-[11px] font-mono text-gray-500 pt-1">Issued: Feb 06, 2024 • IBM / Coursera</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-dark-800/40 border-t border-gray-800/60 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-xs font-mono text-cyber-cyan uppercase tracking-widest mb-2">// 03. Portfolio Showcase</h2>
+                <h3 class="text-3xl font-bold text-white">Featured Engineering Projects</h3>
+                <p class="text-gray-400 text-sm mt-2">Interactive breakdown of hardware design, machine learning integration, and system programming.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- Project 1: BEAT IT -->
+                <div class="glass-card rounded-xl overflow-hidden flex flex-col justify-between group">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan text-[11px] font-mono">
+                                Capstone Thesis
+                            </span>
+                            <span class="text-xs text-amber-400 font-mono"><i class="fa-solid fa-star mr-1"></i> Best Presenter</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white group-hover:text-cyber-cyan transition-colors">
+                            BEAT IT: Wearable Heart Rate & CAD Risk Predictor
+                        </h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            IoT wearable system using ESP32-C3 & MAX30102 sensor paired with a Logistic Regression ML model (88.52% accuracy) for Coronary Artery Disease risk prediction.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 pt-2 text-[10px] font-mono text-gray-300">
+                            <span class="px-2 py-0.5 rounded bg-dark-700">ESP32-C3</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-700">Python (ML)</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-700">Firebase</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-700">C++</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openProjectModal('beatit')" class="w-full py-2.5 rounded-lg bg-dark-700 hover:bg-cyber-cyan hover:text-dark-900 text-gray-200 text-xs font-semibold transition flex items-center justify-center space-x-2">
+                            <span>View Full Specifications</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2: BARAKO -->
+                <div class="glass-card rounded-xl overflow-hidden flex flex-col justify-between group">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded bg-cyber-emerald/10 border border-cyber-emerald/30 text-cyber-emerald text-[11px] font-mono">
+                                Robotics
+                            </span>
+                            <span class="text-xs text-gray-500 font-mono">1kg Competition</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white group-hover:text-cyber-emerald transition-colors">
+                            Project BARAKO: Remote-Controlled Sumobot
+                        </h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Heavyweight competitive sumobot equipped with custom high-torque motor driver circuitry, steel chassis design, and ESP32 wireless control.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 pt-2 text-[10px] font-mono text-gray-300">
+                            <span class="px-2 py-0.5 rounded bg-dark-700">ESP32</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-700">Motor Drivers</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-700">3D CAD</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-700">PWM Control</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openProjectModal('barako')" class="w-full py-2.5 rounded-lg bg-dark-700 hover:bg-cyber-emerald hover:text-dark-900 text-gray-200 text-xs font-semibold transition flex items-center justify-center space-x-2">
+                            <span>View Specs & Blueprint</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3: NEOPLADE -->
+                <div class="glass-card rounded-xl overflow-hidden flex flex-col justify-between group">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[11px] font-mono">
+                                Automation
+                            </span>
+                            <span class="text-xs text-gray-500 font-mono">Clean Tech</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                            NEOPLADE: Pyrolysis Distillation Reactor
+                        </h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Automated environmental control framework converting waste plastics into usable fuel using embedded temperature telemetry and distillation algorithms.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 pt-2 text-[10px] font-mono text-gray-300">
+                            <span class="px-2 py-0.5 rounded bg-dark-700">Sensors</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-700">PID Control</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-700">Microcontrollers</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-700">Automation</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openProjectModal('neoplade')" class="w-full py-2.5 rounded-lg bg-dark-700 hover:bg-blue-400 hover:text-dark-900 text-gray-200 text-xs font-semibold transition flex items-center justify-center space-x-2">
+                            <span>View System Architecture</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-mono text-cyber-cyan uppercase tracking-widest mb-2">// 04. Technical Toolbox</h2>
+                <h3 class="text-3xl font-bold text-white">Skills & Competency Matrix</h3>
+            </div>
+
+            <!-- Skills Tab Header -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10 text-xs font-mono">
+                <button onclick="switchSkillTab('cyber')" id="tab-cyber" class="skill-tab-btn px-4 py-2 rounded-lg bg-cyber-cyan text-dark-900 font-bold transition">
+                    Cybersecurity & Blue Team
+                </button>
+                <button onclick="switchSkillTab('hardware')" id="tab-hardware" class="skill-tab-btn px-4 py-2 rounded-lg bg-dark-800 text-gray-400 hover:text-white border border-gray-700 transition">
+                    Hardware & Embedded
+                </button>
+                <button onclick="switchSkillTab('software')" id="tab-software" class="skill-tab-btn px-4 py-2 rounded-lg bg-dark-800 text-gray-400 hover:text-white border border-gray-700 transition">
+                    Software & AI / Languages
+                </button>
+            </div>
+
+            <!-- Skills Content Panels -->
+            <div id="skills-container" class="glass-card p-8 rounded-xl">
+                
+                <!-- Cybersecurity Panel -->
+                <div id="skills-cyber" class="skill-panel grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-shield-halved text-cyber-cyan text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">Google Chronicle SIEM</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-network-wired text-cyber-cyan text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">Splunk SIEM Logging</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-code-branch text-cyber-cyan text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">YARA-L Rule Drafting</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-crosshairs text-cyber-cyan text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">Threat Intelligence</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-clock-rotate-left text-cyber-cyan text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">Incident Response</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-key text-cyber-cyan text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">Cryptography</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-clipboard-check text-cyber-cyan text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">NIST & MITRE Frameworks</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-brands fa-linux text-cyber-cyan text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">Linux OS Hardening</div>
+                    </div>
+                </div>
+
+                <!-- Hardware Panel (Hidden initially) -->
+                <div id="skills-hardware" class="skill-panel hidden grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-microchip text-cyber-emerald text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">ESP32 / ESP32-C3</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-heart-pulse text-cyber-emerald text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">MAX30102 PPG Sensor</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-diagram-project text-cyber-emerald text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">KiCad Circuit Schematic</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-wave-square text-cyber-emerald text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">LTspice Simulation</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-wifi text-cyber-emerald text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">BLE & Wi-Fi Protocols</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-cube text-cyber-emerald text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">3D Printing (TPU/PLA)</div>
+                    </div>
+                </div>
+
+                <!-- Software Panel (Hidden initially) -->
+                <div id="skills-software" class="skill-panel hidden grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-brands fa-python text-blue-400 text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">Python (Scikit-Learn)</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-code text-blue-400 text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">C / C++ (Arduino)</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-database text-blue-400 text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">SQL Queries</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-cloud text-blue-400 text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">Google Firebase</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-solid fa-chart-pie text-blue-400 text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">Microsoft Power BI</div>
+                    </div>
+                    <div class="p-3 bg-dark-900/60 rounded-lg border border-gray-800 text-center">
+                        <i class="fa-brands fa-microsoft text-blue-400 text-xl mb-2"></i>
+                        <div class="text-xs font-semibold text-white">Azure Cloud Services</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Leadership Section -->
+    <section id="experience" class="py-20 bg-dark-800/40 border-t border-gray-800/60 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-xs font-mono text-cyber-cyan uppercase tracking-widest mb-2">// 05. Timeline</h2>
+                <h3 class="text-3xl font-bold text-white">Experience & Leadership</h3>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-8 relative before:absolute before:inset-0 before:left-3 md:before:left-1/2 before:-ml-px before:w-0.5 before:bg-gray-800">
+                
+                <!-- Item 1 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="flex items-center justify-center w-7 h-7 rounded-full border-2 border-cyber-cyan bg-dark-900 text-cyber-cyan text-xs shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <div class="w-[calc(100%-2rem)] md:w-[calc(50%-2.5rem)] glass-card p-5 rounded-xl space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-cyber-cyan">2023 – 2025</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-gray-800 text-gray-300">Management</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white">Founder & Business Lead</h4>
+                        <p class="text-xs text-gray-400">MHL Ticketing Services & TSISMIX Beverage Brand</p>
+                        <p class="text-xs text-gray-500 leading-relaxed pt-1">
+                            Managed business operations, client reservation portals, financial ledger tracking, and local marketing strategies.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="flex items-center justify-center w-7 h-7 rounded-full border-2 border-cyber-emerald bg-dark-900 text-cyber-emerald text-xs shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="w-[calc(100%-2rem)] md:w-[calc(50%-2.5rem)] glass-card p-5 rounded-xl space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-cyber-emerald">2020 – 2021</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-gray-800 text-gray-300">Community</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white">Virtual Assistant & Volunteer Coordinator</h4>
+                        <p class="text-xs text-gray-400">MHL Foundation / ValkFound</p>
+                        <p class="text-xs text-gray-500 leading-relaxed pt-1">
+                            Coordinated digital logistics, donor database management, and community relief operations.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Contact Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <h2 class="text-xs font-mono text-cyber-cyan uppercase tracking-widest">// 06. Let's Connect</h2>
+                    <h3 class="text-3xl font-bold text-white">Get In Touch</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        I am actively seeking entry-level opportunities in Cybersecurity, Security Operations (SOC), IoT Systems Integration, and Embedded Engineering.
+                    </p>
+
+                    <div class="space-y-4 font-mono text-xs">
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-dark-800/80 border border-gray-800">
+                            <i class="fa-solid fa-envelope text-cyber-cyan text-base"></i>
+                            <div>
+                                <span class="text-gray-500 block text-[10px]">EMAIL</span>
+                                <a href="mailto:henryjrlompot8@gmail.com" class="text-gray-200 hover:text-cyber-cyan">henryjrlompot8@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-dark-800/80 border border-gray-800">
+                            <i class="fa-solid fa-phone text-cyber-emerald text-base"></i>
+                            <div>
+                                <span class="text-gray-500 block text-[10px]">PHONE</span>
+                                <a href="tel:+639927553081" class="text-gray-200 hover:text-cyber-emerald">+63 992 755 3081</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-dark-800/80 border border-gray-800">
+                            <i class="fa-solid fa-location-dot text-blue-400 text-base"></i>
+                            <div>
+                                <span class="text-gray-500 block text-[10px]">LOCATION</span>
+                                <span class="text-gray-200">Las Piñas City, Metro Manila, PH</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4 pt-2">
+                        <a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-lg bg-dark-800 hover:bg-cyber-cyan hover:text-dark-900 border border-gray-700 text-gray-300 flex items-center justify-center transition">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com" target="_blank" class="w-10 h-10 rounded-lg bg-dark-800 hover:bg-cyber-cyan hover:text-dark-900 border border-gray-700 text-gray-300 flex items-center justify-center transition">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form Mockup -->
+                <div class="lg:col-span-7">
+                    <form onsubmit="handleFormSubmit(event)" class="glass-card p-8 rounded-xl space-y-4">
+                        <h4 class="text-lg font-bold text-white mb-2">Send a Message</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-mono text-gray-400 mb-1">YOUR NAME</label>
+                                <input type="text" required placeholder="e.g. Juan Cruz" class="w-full px-4 py-2.5 rounded-lg bg-dark-900 border border-gray-800 text-gray-200 text-xs focus:outline-none focus:border-cyber-cyan transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-gray-400 mb-1">EMAIL ADDRESS</label>
+                                <input type="email" required placeholder="name@company.com" class="w-full px-4 py-2.5 rounded-lg bg-dark-900 border border-gray-800 text-gray-200 text-xs focus:outline-none focus:border-cyber-cyan transition">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 mb-1">SUBJECT</label>
+                            <input type="text" required placeholder="Job Opportunity / Project Inquiry" class="w-full px-4 py-2.5 rounded-lg bg-dark-900 border border-gray-800 text-gray-200 text-xs focus:outline-none focus:border-cyber-cyan transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 mb-1">MESSAGE</label>
+                            <textarea rows="4" required placeholder="Hello Henry, I saw your portfolio on DICT CyberPro..." class="w-full px-4 py-2.5 rounded-lg bg-dark-900 border border-gray-800 text-gray-200 text-xs focus:outline-none focus:border-cyber-cyan transition"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 rounded-lg bg-gradient-to-r from-cyber-cyan to-cyber-emerald text-dark-900 font-bold text-xs hover:brightness-110 transition shadow-lg glow-cyan">
+                            TRANSMIT_MESSAGE()
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-dark-900 border-t border-gray-800/80 text-center text-xs font-mono text-gray-500">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>© 2026 Henry Jr T. Lompot. All rights reserved.</p>
+            <p class="mt-1 text-[11px] text-gray-600">Built for DICT CyberPro Portal & Engineering Career Placement</p>
+        </div>
+    </footer>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 bg-dark-900/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="glass-card max-w-2xl w-full rounded-xl overflow-hidden p-6 space-y-4 max-h-[90vh] overflow-y-auto relative">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Dynamically Populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume Modal -->
+    <div id="resume-modal" class="fixed inset-0 z-50 bg-dark-900/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="glass-card max-w-lg w-full rounded-xl p-6 space-y-4 text-center">
+            <i class="fa-solid fa-file-pdf text-cyber-cyan text-4xl"></i>
+            <h3 class="text-xl font-bold text-white">Henry Jr Lompot - Resume</h3>
+            <p class="text-xs text-gray-400">
+                You can download the full PDF resume optimized for DICT CyberPro or HR screening.
+            </p>
+            <div class="flex justify-center space-x-3 pt-2">
+                <a href="henry_lompot_resume.html" target="_blank" class="px-5 py-2.5 rounded-lg bg-cyber-cyan text-dark-900 font-bold text-xs hover:brightness-110 transition">
+                    Open Interactive Resume Page
+                </a>
+                <button onclick="closeResumeModal()" class="px-4 py-2.5 rounded-lg bg-dark-700 text-gray-300 text-xs">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 px-4 py-3 rounded-lg bg-cyber-emerald text-dark-900 font-bold text-xs shadow-xl transition-all transform translate-y-20 opacity-0 flex items-center space-x-2">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-msg">Message sent successfully!</span>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Skill Tab Switcher
+        function switchSkillTab(tab) {
+            document.querySelectorAll('.skill-panel').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('.skill-tab-btn').forEach(b => {
+                b.classList.remove('bg-cyber-cyan', 'text-dark-900', 'font-bold');
+                b.classList.add('bg-dark-800', 'text-gray-400', 'border', 'border-gray-700');
+            });
+
+            document.getElementById(`skills-${tab}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-${tab}`);
+            activeBtn.classList.remove('bg-dark-800', 'text-gray-400', 'border', 'border-gray-700');
+            activeBtn.classList.add('bg-cyber-cyan', 'text-dark-900', 'font-bold');
+        }
+
+        // Project Modal Logic
+        const projectsData = {
+            beatit: {
+                title: "BEAT IT: Wearable Heart Rate Monitor & CAD Risk Predictor",
+                role: "Lead Programmer, Systems Integrator & Software Designer",
+                tech: ["ESP32-C3", "MAX30102 PPG Sensor", "Python (Logistic Regression)", "Arduino Cloud IoT", "Google Firebase", "C++"],
+                desc: "An end-to-end IoT wearable health monitor and predictive CAD risk classifier. Uses continuous PPG sensor signal processing transferred wirelessly to Arduino Cloud IoT and Firebase. The Python-trained Logistic Regression model achieves 88.52% test accuracy using 2024 ESC clinical guideline parameters."
+            },
+            barako: {
+                title: "Project BARAKO: 1kg Remote-Controlled Sumobot",
+                role: "Hardware & Circuitry Integrator",
+                tech: ["ESP32-C3", "High-Torque Motors", "Custom Motor Driver Circuit", "3D CAD Chassis"],
+                desc: "Designed and built a competitive 1kg sumobot utilizing custom H-Bridge motor driver circuitry, precision PWM power regulation, high-traction wheels, and an ESP32 wireless control system."
+            },
+            neoplade: {
+                title: "NEOPLADE: Smart Pyrolysis & Distillation Reactor",
+                role: "Embedded Systems Developer",
+                tech: ["PID Temperature Control", "Thermal Telemetry Sensors", "Distillation Automation"],
+                desc: "Developed an automated clean-tech control framework converting plastic waste into usable fuel via regulated pyrolysis temperature cycles and automated condenser flow controls."
+            }
+        };
+
+        function openProjectModal(id) {
+            const data = projectsData[id];
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <span class="text-xs font-mono text-cyber-cyan uppercase">${data.role}</span>
+                <h3 class="text-xl font-bold text-white">${data.title}</h3>
+                <p class="text-xs text-gray-300 leading-relaxed">${data.desc}</p>
+                <div class="pt-2">
+                    <span class="text-[11px] font-mono text-gray-400 block mb-1">TECH STACK & TOOLS:</span>
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+                        ${data.tech.map(t => `<span class="px-2.5 py-1 rounded bg-dark-800 border border-gray-700 text-cyber-cyan">${t}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+            document.getElementById('project-modal').classList.remove('hidden');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+        }
+
+        function openResumeModal() {
+            document.getElementById('resume-modal').classList.remove('hidden');
+        }
+
+        function closeResumeModal() {
+            document.getElementById('resume-modal').classList.add('hidden');
+        }
+
+        // Form Submission Simulation
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            e.target.reset();
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
